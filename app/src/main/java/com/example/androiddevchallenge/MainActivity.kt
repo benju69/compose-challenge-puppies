@@ -15,17 +15,19 @@
  */
 package com.example.androiddevchallenge
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.dogsList
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                PuppiesList()
             }
         }
     }
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
+fun PuppiesList() {
     Surface(color = MaterialTheme.colors.background) {
         PuppiesListScreen()
     }
@@ -52,7 +54,7 @@ fun MyApp() {
 @Composable
 fun LightPreview() {
     MyTheme {
-        MyApp()
+        PuppiesList()
     }
 }
 
@@ -60,19 +62,26 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp()
+        PuppiesList()
     }
 }
 
 @Composable
 fun PuppiesListScreen() {
+    val context = LocalContext.current
     Column {
-        TopAppBar(title = { Text(text = "Puppies adoption") })
+        TopAppBar(
+            title = { Text(text = "Puppies adoption") },
+            backgroundColor = MaterialTheme.colors.primary,
+        )
 
         LazyColumn {
-            for (dog in dogsList) {
-                item {
-                    PuppyItem(dog.name)
+            items(dogsList) { dog ->
+                PuppyItem(dog) {
+                    // Make a classic intent
+                    val detail = Intent(context, DetailActivity::class.java)
+                    detail.putExtra("dog", dog)
+                    context.startActivity(detail)
                 }
             }
         }
