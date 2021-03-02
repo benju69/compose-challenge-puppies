@@ -17,7 +17,14 @@ package com.example.androiddevchallenge
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -27,12 +34,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.Dog
 import com.example.androiddevchallenge.model.dogsList
 
-//@Preview
+// @Preview
 @Composable
 fun PuppyItem(
     dog: Dog = dogsList.first(), // Just for the preview, not the best way
@@ -50,7 +56,7 @@ fun PuppyItem(
                     .height(80.dp)
                     .clickable(onClick = onClick)
             ) {
-                val image: Painter = painterResource(id = dog.image)
+                val image: Painter = painterResource(id = dog.imageId)
                 Image(
                     painter = image, contentDescription = dog.name,
                     modifier = Modifier
@@ -66,4 +72,3 @@ fun PuppyItem(
         }
     }
 }
-

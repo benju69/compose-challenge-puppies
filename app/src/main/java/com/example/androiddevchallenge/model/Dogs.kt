@@ -26,13 +26,13 @@ data class Dog(
     val gender: String,
     val height: String,
     val color: String,
-    val image: Int,
+    val imageId: Int,
     val url: String
 ) : Parcelable
 
 // Make some dogs in code (next time from api :)), data from petfinder.com
 val dogsList = listOf(
-    Dog("Gunther", "Pointer & Terrier Mix", "Male",  "Medium", "Red / Chestnut / Orange, White / Cream", R.drawable.gunther, "https://www.petfinder.com/dog/gunther-49996076/ny/morris/suruluna-animal-rescue-ny1267/"),
+    Dog("Gunther", "Pointer & Terrier Mix", "Male", "Medium", "Red / Chestnut / Orange, White / Cream", R.drawable.gunther, "https://www.petfinder.com/dog/gunther-49996076/ny/morris/suruluna-animal-rescue-ny1267/"),
     Dog("Montey", "Pit Bull Terrier", "Male", "Medium", "Black, White / Cream", R.drawable.montey, "https://www.petfinder.com/dog/montey-50689647/ny/clay/recycle-a-bull-bully-breed-rescue-ny1102/"),
     Dog("Amora", "Shepherd Mix", "Female", "Medium", "Brindle", R.drawable.amora, "https://www.petfinder.com/dog/amora-50698373/ny/amsterdam/montgomery-county-spca-ny203/"),
     Dog("Dame", "Shepherd Mix", "Female", "Medium", "Brindle", R.drawable.dame, "https://www.petfinder.com/dog/dame-50698366/ny/amsterdam/montgomery-county-spca-ny203/"),
