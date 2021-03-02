@@ -26,6 +26,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.androiddevchallenge.model.dogsList
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -69,21 +70,11 @@ fun PuppiesListScreen() {
         TopAppBar(title = { Text(text = "Puppies adoption") })
 
         LazyColumn {
-            // Add a single item
-            item {
-                PuppyItem("First item")
-            }
-
-            // Add 5 items
-            items(20) { index ->
-                PuppyItem("Item: $index")
-            }
-
-            // Add another single item
-            item {
-                PuppyItem("Last item")
+            for (dog in dogsList) {
+                item {
+                    PuppyItem(dog.name)
+                }
             }
         }
-
     }
 }
